@@ -1,0 +1,10 @@
+name: TestPlugin
+version: 1.1
+main: com.almazn1k.TestPlugin.MainPlugin
+api-version: 1.16 # Critical for 1.16.5 compatibility
+commands:
+  test:
+    description: A test command.
+  giveitem:
+    description: A giving items test.
+    permission: TestPlugin.giveitem
