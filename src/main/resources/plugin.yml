@@ -9,4 +9,4 @@ commands:
     description: A giving items test.
     permission: TestPlugin.giveitem
   givemoney:
-	description: Testing Vault Integration
+    description: Testing Vault Integration

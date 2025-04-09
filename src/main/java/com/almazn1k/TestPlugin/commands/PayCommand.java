@@ -36,7 +36,7 @@ public class PayCommand implements CommandExecutor {
 			double amount = Double.parseDouble(args[1]);
 			Economy ec = MainPlugin.getEconomy();
 			
-			if (ec.has(targetPlayer, amount)) {
+			if (ec.has(player, amount)) {
 				ec.withdrawPlayer(player, amount);
 				ec.depositPlayer(targetPlayer, amount);
 				
