@@ -10,3 +10,5 @@ commands:
     permission: TestPlugin.giveitem
   givemoney:
     description: Testing Vault Integration
+  ymltest:
+    description: Testin YML integration

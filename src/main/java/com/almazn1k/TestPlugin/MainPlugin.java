@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.almazn1k.TestPlugin.commands.GiveItemCommand;
 import com.almazn1k.TestPlugin.commands.PayCommand;
 import com.almazn1k.TestPlugin.commands.TestCommand;
+import com.almazn1k.TestPlugin.commands.YMLMessageCommand;
 
 import net.milkbowl.vault.economy.Economy;
 
@@ -20,12 +21,18 @@ public class MainPlugin extends JavaPlugin {
 			Bukkit.getServer().getPluginManager().disablePlugin(this);
 			return;
 		}
+		
+		getLogger().info("Loading configuration...");
+		saveDefaultConfig();
+		
 		getLogger().info("Loading commands...");
-		getCommand("test").setExecutor(new TestCommand());
-		getLogger().info("1/3 loaded. 1 left...");
+		getCommand("test").setExecutor(new TestCommand(this));
+		getLogger().info("1/4 loaded. 3 left...");
 		getCommand("giveitem").setExecutor(new GiveItemCommand());
-		getLogger().info("2/3 loaded. 0 left...");
+		getLogger().info("2/4 loaded. 2 left...");
 		getCommand("givemoney").setExecutor(new PayCommand());
+		getLogger().info("2/4 loaded. 2 left...");
+		getCommand("ymltest").setExecutor(new YMLMessageCommand(getConfig()));
 		getLogger().info("Plugin enabled!");
 		// Register commands/events here
 	 }
