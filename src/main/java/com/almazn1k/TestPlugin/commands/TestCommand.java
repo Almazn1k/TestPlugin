@@ -32,8 +32,9 @@ public class TestCommand implements CommandExecutor {
 			sender.sendMessage("Author: Almazn1k");
 		}
 		else if (subCmd.equals("reload")) {
-			p.reloadConfig();
+			p.reloadPluginConfig();
 			sender.sendMessage("Reloaded.");
+			return true;
 		}
 		
 		return true;

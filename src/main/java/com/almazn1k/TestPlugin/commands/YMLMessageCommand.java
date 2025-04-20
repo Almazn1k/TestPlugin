@@ -7,17 +7,19 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.jetbrains.annotations.NotNull;
 
+import com.almazn1k.resources.ConfigManager;
+
 public class YMLMessageCommand implements CommandExecutor{
-	private final FileConfiguration config;
+	private ConfigManager config;
 	
-	public YMLMessageCommand(FileConfiguration c) {
-		config = c;
+	public YMLMessageCommand(ConfigManager a) {
+		config = a;
 	}
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
 			@NotNull String[] args) {
-		sender.sendMessage(config.getString("field1"));
+		sender.sendMessage(config.getField1());
 		return false;
 	}
 

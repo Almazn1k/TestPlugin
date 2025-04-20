@@ -8,11 +8,13 @@ import com.almazn1k.TestPlugin.commands.GiveItemCommand;
 import com.almazn1k.TestPlugin.commands.PayCommand;
 import com.almazn1k.TestPlugin.commands.TestCommand;
 import com.almazn1k.TestPlugin.commands.YMLMessageCommand;
+import com.almazn1k.resources.ConfigManager;
 
 import net.milkbowl.vault.economy.Economy;
 
 public class MainPlugin extends JavaPlugin {
 	private static Economy ec = null;
+	private ConfigManager cmanager;
 	
 	@Override
 	 public void onEnable() {
@@ -24,6 +26,8 @@ public class MainPlugin extends JavaPlugin {
 		
 		getLogger().info("Loading configuration...");
 		saveDefaultConfig();
+		reloadConfig();
+		cmanager = new ConfigManager(getConfig());
 		
 		getLogger().info("Loading commands...");
 		getCommand("test").setExecutor(new TestCommand(this));
@@ -32,7 +36,7 @@ public class MainPlugin extends JavaPlugin {
 		getLogger().info("2/4 loaded. 2 left...");
 		getCommand("givemoney").setExecutor(new PayCommand());
 		getLogger().info("2/4 loaded. 2 left...");
-		getCommand("ymltest").setExecutor(new YMLMessageCommand(getConfig()));
+		getCommand("ymltest").setExecutor(new YMLMessageCommand(cmanager));
 		getLogger().info("Plugin enabled!");
 		// Register commands/events here
 	 }
@@ -48,6 +52,11 @@ public class MainPlugin extends JavaPlugin {
 	
 	public static Economy getEconomy() {
 		return ec;
+	}
+	
+	public void reloadPluginConfig() {
+		reloadConfig();
+		cmanager = new ConfigManager(getConfig());
 	}
 
 	 @Override
