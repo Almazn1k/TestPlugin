@@ -6,11 +6,14 @@ import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
 import com.almazn1k.TestPlugin.MainPlugin;
+import com.almazn1k.TestPlugin.commands.subcmds.TestInfoCommand;
 
 public class TestCommand implements CommandExecutor {
 	private MainPlugin p;
+	private TestInfoCommand ticmd;
 	
 	public TestCommand(MainPlugin pl) {
+		ticmd = new TestInfoCommand();
 		p = pl;
 	}
 
@@ -27,8 +30,7 @@ public class TestCommand implements CommandExecutor {
 			sender.sendMessage("There's no commands. Just testing subcmds!");
 		}
 		else if (subCmd.equals("info")) {
-			sender.sendMessage("TestPlugin v1.0");
-			sender.sendMessage("Author: Almazn1k");
+			ticmd.showMessage(sender);
 		}
 		else if (subCmd.equals("reload")) {
 			p.reloadPluginConfig();
