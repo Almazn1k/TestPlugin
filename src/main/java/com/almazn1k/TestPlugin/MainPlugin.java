@@ -14,7 +14,6 @@ import net.milkbowl.vault.economy.Economy;
 
 public class MainPlugin extends JavaPlugin {
 	private static Economy ec = null;
-	private ConfigManager cmanager;
 	
 	@Override
 	 public void onEnable() {
@@ -27,7 +26,7 @@ public class MainPlugin extends JavaPlugin {
 		getLogger().info("Loading configuration...");
 		saveDefaultConfig();
 		reloadConfig();
-		cmanager = new ConfigManager(getConfig());
+		ConfigManager.init(getConfig());
 		
 		getLogger().info("Loading commands...");
 		getCommand("test").setExecutor(new TestCommand(this));
@@ -36,7 +35,7 @@ public class MainPlugin extends JavaPlugin {
 		getLogger().info("2/4 loaded. 2 left...");
 		getCommand("givemoney").setExecutor(new PayCommand());
 		getLogger().info("2/4 loaded. 2 left...");
-		getCommand("ymltest").setExecutor(new YMLMessageCommand(cmanager));
+		getCommand("ymltest").setExecutor(new YMLMessageCommand());
 		getLogger().info("Plugin enabled!");
 		// Register commands/events here
 	 }
@@ -56,7 +55,7 @@ public class MainPlugin extends JavaPlugin {
 	
 	public void reloadPluginConfig() {
 		reloadConfig();
-		cmanager = new ConfigManager(getConfig());
+		ConfigManager.init(getConfig());
 	}
 
 	 @Override
